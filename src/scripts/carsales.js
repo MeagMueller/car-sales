@@ -114,4 +114,38 @@ const salesByWeek = [
     }
 ]
 
-let 
+const salesDisplay = document.querySelector("#sales-display")
+
+
+
+// salesByWeek.forEach(car => {
+//     const salesPersonNameContainer = document.createElement("h1")
+//     for (const salesPerson of Object.keys(godsHelpMe)) {
+//     salesPersonNameContainer.innerHTML += `<h1>${salesByWeek[0].sales_agent.first_name} ${salesByWeek[0].sales_agent.last_name}</h1>`    
+//     }
+//     salesDisplay.appendChild(salesPersonNameContainer)
+// })
+
+// salesByWeek.forEach(name => {
+//     const salesPersonNameContainer = document.createElement("h1")
+//     const salesPersonArray = Object.entries(name)
+//     for (const salesPersonName of salesPersonArray) {
+//         salesPersonNameContainer.innerHTML += `<h1>${salesByWeek[0].sales_agent.first_name} ${salesByWeek[1].sales_agent.last_name}</h1>` 
+//     salesDisplay.appendChild(salesPersonNameContainer)   
+//     }
+// })
+
+salesByWeek.forEach(car => {
+    const salesPersonNameContainer = document.createElement("h1")
+    salesPersonNameContainer.textContent = `${car.sales_agent.first_name} ${car.sales_agent.last_name}`
+    salesDisplay.appendChild(salesPersonNameContainer)
+
+    const salesArray = Object.entries(car.vehicle)
+    for (const carKeys of salesArray) {
+        salesDisplay.innerHTML += `<div>${carKeys[0]}: ${carKeys[1]}</div>`
+    }
+
+    const profit = document.createElement("p")
+    profit.textContent = `$${car.gross_profit} `
+    salesDisplay.appendChild(profit)
+})
